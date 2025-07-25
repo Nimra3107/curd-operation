@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import dbConnect from "../../../src/lib/db";
 import UserModel from "../../../src/models/User";
+// mongodb+srv://NimraNaveed:nimra321@cluster0.mdnsguv.mongodb.net/
 
 // GET /api/users - Fetch all users
 export async function GET() {
   try {
     await dbConnect();
     const users = await UserModel.find({});
+    console.log("users===", users)
     return NextResponse.json(users);
   } catch (error) {
     return NextResponse.json(

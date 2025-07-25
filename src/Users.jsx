@@ -15,7 +15,7 @@ function Users() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("/api/users");
+      const response = await fetch("/api/users", { cache: 'no-cache' });
       if (response.ok) {
         const result = await response.json();
         setUsers(result);
